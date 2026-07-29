@@ -1,5 +1,3 @@
-# Sıfırdan RAG
-
 Framework kullanmadan (LangChain, LlamaIndex vb. yok), RAG'in temel mekanizmasını anlamak için
 adım adım geliştirilen bir öğrenme projesi. Embedding + cosine similarity + LLM zincirinin
 altında ne olduğunu görmek amacıyla her şey ham Python ile yazıldı.
