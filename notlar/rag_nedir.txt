@@ -1,0 +1,6 @@
+RAG (Retrieval-Augmented Generation), bir LLM'in cevap uretirken kendi egitim verisine ek olarak
+harici bir bilgi kaynagindan (dokuman, veritabani, vs.) ilgili bilgiyi cekip context'e eklemesi
+yontemidir. Bu sayede model, guncel veya ozel (kendi egitim verisinde olmayan) bilgilere dayanarak
+daha dogru cevaplar uretebilir. Temel adimlari: dokumanlari parcalara bolme (chunking), her parcayi
+bir vektore cevirme (embedding), kullanicinin sorusuna en yakin parcalari bulma (retrieval) ve son
+olarak bu parcalari LLM'e context olarak verip cevap uretme (generation).

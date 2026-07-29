@@ -1,0 +1,25 @@
+Vektor veritabanlari, buyuk miktarda embedding vektorunu depolamak ve hizli benzerlik aramasi
+yapmak icin tasarlanmis sistemlerdir. Basit bir RAG prototipinde tum vektorleri bellekte numpy
+array olarak tutup, her soru icin tum vektorlerle cosine similarity hesaplamak yeterlidir. Ancak
+dokuman sayisi binlere, milyonlara ciktiginda bu yaklasim yavaslar cunku her sorguda tum
+vektorlerle karsilastirma yapmak gerekir (brute-force arama).
+
+Vektor veritabanlari bu sorunu Approximate Nearest Neighbor (ANN) algoritmalari ile cozer. En
+yaygin kullanilan algoritmalardan biri HNSW (Hierarchical Navigable Small World) grafidir. HNSW,
+vektorleri katmanli bir graf yapisinda organize eder; ust katmanlar seyrek baglantili "otoyollar",
+alt katmanlar ise daha yogun baglantili "sokaklar" gibi calisir. Arama, ust katmandan baslayip
+asama asama hedefe yaklasarak yapilir, bu da milyonlarca vektor arasinda bile milisaniyeler
+icinde sonuc almayi mumkun kilar.
+
+Populer vektor veritabani secenekleri: Qdrant (Rust ile yazilmis, hafif ve hizli, kendi
+sunucunda calistirilabilir), Chroma (Python odakli, gelistirme asamasinda kullanimi cok kolay),
+Pinecone (tamamen yonetilen, bulut tabanli, kredi karti gerektirir), Weaviate (GraphQL destekli,
+hibrit arama ozellikleri guclu), ve pgvector (PostgreSQL'e eklenen bir extension, zaten Postgres
+kullanan projeler icin ek bir sistem kurmadan vektor arama imkani sunar).
+
+Bir vektor veritabani secerken dikkat edilmesi gereken kriterler: dokuman sayin ve buyume hizi,
+metadata filtreleme ihtiyacin (ornegin "sadece 2024 sonrasi dokumanlar" gibi), hibrit arama
+(keyword + semantic) destegi, self-hosted mi yoksa managed mi istedigin, ve maliyet. Kucuk ve
+orta olcekli projeler icin pgvector veya Qdrant genellikle yeterli ve baslangic icin en pratik
+secenektir; zaten PostgreSQL kullanan bir sistemde pgvector ekstra altyapi karmasikligi
+getirmedigi icin ozellikle caziptir.

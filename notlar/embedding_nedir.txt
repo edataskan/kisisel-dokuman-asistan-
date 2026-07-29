@@ -1,0 +1,6 @@
+Embedding, bir metni sabit boyutlu bir sayi vektorune (ornegin 384 veya 1536 boyutlu) donusturme
+islemidir. Anlamca birbirine yakin metinler, vektor uzayinda da birbirine yakin konumlanir. Iki
+vektor arasindaki benzerlik genellikle cosine similarity ile olculur: vektorler ayni yone
+bakiyorsa benzerlik 1'e yakin, dik ise 0, ters yone bakiyorsa -1'e yakin cikar. Embedding modelleri
+genellikle transformer mimarisiyle egitilir; ornekler arasinda OpenAI'in text-embedding modelleri
+ve acik kaynak sentence-transformers modelleri (ornegin all-MiniLM-L6-v2) sayilabilir.

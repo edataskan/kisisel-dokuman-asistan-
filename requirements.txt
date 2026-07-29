@@ -1,0 +1,3 @@
+google-genai
+sentence-transformers
+numpy
