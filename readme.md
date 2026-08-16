@@ -1,8 +1,4 @@
-Framework kullanmadan (LangChain, LlamaIndex vb. yok), RAG'in temel mekanizmasını anlamak için
-adım adım geliştirilen bir öğrenme projesi. Embedding + cosine similarity + LLM zincirinin
-altında ne olduğunu görmek amacıyla her şey ham Python ile yazıldı.
-
-## Mimari
+ Mimari
 
 - **Embedding**: `sentence-transformers` ile local çalışır (`all-MiniLM-L6-v2`) — harici API'ye bağımlı değil
 - **Retrieval**: numpy ile cosine similarity (vektör veritabanı yok, brute-force arama)
@@ -52,10 +48,4 @@ ve cevabı üretir.
 - [ ] Adım 6 — Agent katmanı (tool use, ReAct pattern, memory)
 - [ ] Adım 7 — FastAPI servisi + Docker + Kafka/Redis ile prodüksiyona yaklaştırma
 
-    <<<<<<< HEAD
-    ## Notlar
 
-    - `CHUNK_BOYUTU` ve `CHUNK_OVERLAP` değerleri `rag_v2_chunking.py` içinde ayarlanabilir
-    - `notlar/` klasörüne `.txt` dışında dosya koyma — script tüm `.txt` dosyalarını doküman olarak okur
-    =======
->>>>>>> 2e68614 (new changes)
