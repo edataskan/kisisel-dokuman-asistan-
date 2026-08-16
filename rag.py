@@ -22,12 +22,10 @@ def dokumanlari_yukle(klasor: str) -> list[dict]:
 
 
 def embed_et(metinler: list[str]) -> np.ndarray:
-    # normalize_embeddings=True -> cosine similarity icin vektorleri birim uzunluga getirir
     return embed_model.encode(metinler, normalize_embeddings=True)
 
 
 def en_yakin_dokumani_bul(soru_vektoru: np.ndarray, doc_vektorleri: np.ndarray, k: int = 1):
-    # Vektorler normalize edildigi icin dot product = cosine similarity
     skorlar = doc_vektorleri @ soru_vektoru
     en_iyi_indeksler = np.argsort(skorlar)[::-1][:k]
     return en_iyi_indeksler, skorlar[en_iyi_indeksler]

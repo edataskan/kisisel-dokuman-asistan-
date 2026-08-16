@@ -1,3 +1,5 @@
 google-genai
 sentence-transformers
 numpy
+psycopg[binary]
+rank_bm25

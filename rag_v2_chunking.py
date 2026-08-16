@@ -4,8 +4,6 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 from google import genai
 
-# ---- 1. Setup ----
-
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 GEMINI_MODEL = "gemini-flash-latest"
 embed_model = SentenceTransformer("all-MiniLM-L6-v2")
@@ -15,14 +13,8 @@ CHUNK_BOYUTU = 500      # karakter
 CHUNK_OVERLAP = 50      # karakter
 
 
-# ---- 2. Chunking ----
-
 def metni_parcala(metin: str, boyut: int = CHUNK_BOYUTU, overlap: int = CHUNK_OVERLAP) -> list[str]:
-    """
-    Metni sabit boyutlu, ortusen parcalara boler.
-    Ornek: boyut=500, overlap=50 -> her parca 500 karakter,
-    bir sonraki parca 450. karakterden baslar (son 50 karakter ortusur).
-    """
+    
     if len(metin) <= boyut:
         return [metin]
 
@@ -33,7 +25,7 @@ def metni_parcala(metin: str, boyut: int = CHUNK_BOYUTU, overlap: int = CHUNK_OV
         parca = metin[baslangic:bitis].strip()
         if parca:
             parcalar.append(parca)
-        baslangic += boyut - overlap  # overlap kadar geri git
+        baslangic += boyut - overlap  
 
     return parcalar
 
